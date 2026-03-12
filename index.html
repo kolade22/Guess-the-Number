@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="main-heading">Guess the Number</h1>
+      <div id="score-display">Score: <span id="score">0</span></div>
+      <div id="output-container"></div>
+      <input type="number" id="user-input" placeholder="Enter your guess..." />
+      <button onclick="guessNum()" id="submit-btn">Guess</button>
+    </div>
+  </body>
+</html>
+<script>
+  let userNum = document.getElementById("user-input");
+  let outputContainer = document.getElementById("output-container");
+  let score = 0;
+  let scoreEl = document.getElementById("score");
+
+  function guessNum(params) {
+    let randomNum = Math.ceil(Math.random() * 10);
+    if (userNum.value == randomNum) {
+      outputContainer.innerHTML = "Congratulations! You guessed the number.";
+    } else if (userNum.value > 10) {
+      outputContainer.innerHTML = "Invalid Number";
+    } else if (userNum.value < 1) {
+      outputContainer.innerHTML = "Invalid Number";
+    } else {
+      outputContainer.innerHTML = "Wrong guess! Try again.";
+    }
+    if (userNum.value == randomNum) {
+      score++;
+      scoreEl.textContent = score;
+    }
+
+    console.log(randomNum);
+  }
+</script>
